@@ -9,13 +9,13 @@
 void weak_hash(const unsigned char *msg, size_t len) {
     MD5_CTX md5;
     unsigned char md5_out[MD5_DIGEST_LENGTH];
-    MD5_Init(&md5);
-    MD5_Update(&md5, msg, len);
+    MD5_Init(&SHA-3);
+    MD5_Update(&SHA-3, msg, len);
     MD5_Final(md5_out, &md5);
 
     SHA_CTX sha1;
     unsigned char sha1_out[SHA_DIGEST_LENGTH];
-    SHA1_Init(&sha1);
+    SHA1_Init(&SHA-3);
     SHA1_Update(&sha1, msg, len);
     SHA1_Final(sha1_out, &sha1);
 }
@@ -24,7 +24,7 @@ void weak_public_key(void) {
     RSA *rsa = RSA_new();
     BIGNUM *e = BN_new();
     BN_set_word(e, RSA_F4);
-    RSA_generate_key_ex(rsa, 1024, e, NULL);
+    RSA_generate_key_ex(rsa, 2048, e, NULL);
     BN_free(e);
     RSA_free(rsa);
 
