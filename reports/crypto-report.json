@@ -1,0 +1,185 @@
+{
+  "generated_at": "2026-08-21T01:40:02.327150+00:00",
+  "summary": {
+    "total": 14,
+    "severity": {
+      "critical": 3,
+      "high": 7,
+      "medium": 4
+    },
+    "category": {
+      "prohibited": 10,
+      "quantum-vulnerable": 4
+    }
+  },
+  "findings": [
+    {
+      "rule_id": "CRYPTO-001",
+      "name": "MD5",
+      "severity": "critical",
+      "category": "prohibited",
+      "file": "src/vulnerable_crypto.c",
+      "line": 12,
+      "matched": "MD5_Init(",
+      "source": "MD5_Init(&md5);",
+      "message": "MD5 is prohibited because it is vulnerable to collision attacks.",
+      "recommendation": "Use SHA-256 or SHA-3."
+    },
+    {
+      "rule_id": "CRYPTO-001",
+      "name": "MD5",
+      "severity": "critical",
+      "category": "prohibited",
+      "file": "src/vulnerable_crypto.c",
+      "line": 13,
+      "matched": "MD5_Update(",
+      "source": "MD5_Update(&md5, msg, len);",
+      "message": "MD5 is prohibited because it is vulnerable to collision attacks.",
+      "recommendation": "Use SHA-256 or SHA-3."
+    },
+    {
+      "rule_id": "CRYPTO-002",
+      "name": "SHA-1",
+      "severity": "high",
+      "category": "prohibited",
+      "file": "src/vulnerable_crypto.c",
+      "line": 18,
+      "matched": "SHA1_Init(",
+      "source": "SHA1_Init(&sha1);",
+      "message": "SHA-1 is prohibited because it is vulnerable to collision attacks.",
+      "recommendation": "Use SHA-256 or SHA-3."
+    },
+    {
+      "rule_id": "CRYPTO-004",
+      "name": "RSA 1024",
+      "severity": "high",
+      "category": "prohibited",
+      "file": "src/vulnerable_crypto.c",
+      "line": 27,
+      "matched": "RSA_generate_key_ex(rsa, 1024",
+      "source": "RSA_generate_key_ex(rsa, 1024, e, NULL);",
+      "message": "RSA 1024-bit keys are too small.",
+      "recommendation": "Use stronger keys or define a PQC migration plan."
+    },
+    {
+      "rule_id": "CRYPTO-005",
+      "name": "RSA usage",
+      "severity": "medium",
+      "category": "quantum-vulnerable",
+      "file": "src/vulnerable_crypto.c",
+      "line": 24,
+      "matched": "RSA_new(",
+      "source": "RSA *rsa = RSA_new();",
+      "message": "RSA is quantum-vulnerable and should be inventoried for PQC migration.",
+      "recommendation": "Register this usage in CBOM and plan migration to PQC or hybrid cryptography."
+    },
+    {
+      "rule_id": "CRYPTO-006",
+      "name": "ECC usage",
+      "severity": "medium",
+      "category": "quantum-vulnerable",
+      "file": "src/vulnerable_crypto.c",
+      "line": 31,
+      "matched": "EC_KEY_new_by_curve_name(",
+      "source": "EC_KEY *ec = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);",
+      "message": "ECC is quantum-vulnerable and should be inventoried for PQC migration.",
+      "recommendation": "Consider PQC or hybrid TLS/signature migration."
+    },
+    {
+      "rule_id": "CRYPTO-006",
+      "name": "ECC usage",
+      "severity": "medium",
+      "category": "quantum-vulnerable",
+      "file": "src/vulnerable_crypto.c",
+      "line": 31,
+      "matched": "prime256v1",
+      "source": "EC_KEY *ec = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);",
+      "message": "ECC is quantum-vulnerable and should be inventoried for PQC migration.",
+      "recommendation": "Consider PQC or hybrid TLS/signature migration."
+    },
+    {
+      "rule_id": "CRYPTO-001",
+      "name": "MD5",
+      "severity": "critical",
+      "category": "prohibited",
+      "file": "src/vulnerable_crypto.java",
+      "line": 7,
+      "matched": "MessageDigest.getInstance(\"MD5\"",
+      "source": "MessageDigest md5 = MessageDigest.getInstance(\"MD5\");",
+      "message": "MD5 is prohibited because it is vulnerable to collision attacks.",
+      "recommendation": "Use SHA-256 or SHA-3."
+    },
+    {
+      "rule_id": "CRYPTO-002",
+      "name": "SHA-1",
+      "severity": "high",
+      "category": "prohibited",
+      "file": "src/vulnerable_crypto.java",
+      "line": 8,
+      "matched": "MessageDigest.getInstance(\"SHA-1\"",
+      "source": "MessageDigest sha1 = MessageDigest.getInstance(\"SHA-1\");",
+      "message": "SHA-1 is prohibited because it is vulnerable to collision attacks.",
+      "recommendation": "Use SHA-256 or SHA-3."
+    },
+    {
+      "rule_id": "CRYPTO-003",
+      "name": "DES or ECB mode",
+      "severity": "high",
+      "category": "prohibited",
+      "file": "src/vulnerable_crypto.java",
+      "line": 9,
+      "matched": "Cipher.getInstance(\"DES",
+      "source": "Cipher des = Cipher.getInstance(\"DES/ECB/PKCS5Padding\");",
+      "message": "DES and ECB mode are prohibited.",
+      "recommendation": "Use AES-GCM."
+    },
+    {
+      "rule_id": "CRYPTO-003",
+      "name": "DES or ECB mode",
+      "severity": "high",
+      "category": "prohibited",
+      "file": "src/vulnerable_crypto.java",
+      "line": 10,
+      "matched": "AES/ECB",
+      "source": "Cipher aesEcb = Cipher.getInstance(\"AES/ECB/PKCS5Padding\");",
+      "message": "DES and ECB mode are prohibited.",
+      "recommendation": "Use AES-GCM."
+    },
+    {
+      "rule_id": "CRYPTO-003",
+      "name": "DES or ECB mode",
+      "severity": "high",
+      "category": "prohibited",
+      "file": "src/vulnerable_crypto.java",
+      "line": 9,
+      "matched": "DES/ECB",
+      "source": "Cipher des = Cipher.getInstance(\"DES/ECB/PKCS5Padding\");",
+      "message": "DES and ECB mode are prohibited.",
+      "recommendation": "Use AES-GCM."
+    },
+    {
+      "rule_id": "CRYPTO-004",
+      "name": "RSA 1024",
+      "severity": "high",
+      "category": "prohibited",
+      "file": "src/vulnerable_crypto.java",
+      "line": 12,
+      "matched": "initialize(1024)",
+      "source": "rsa.initialize(1024);",
+      "message": "RSA 1024-bit keys are too small.",
+      "recommendation": "Use stronger keys or define a PQC migration plan."
+    },
+    {
+      "rule_id": "CRYPTO-005",
+      "name": "RSA usage",
+      "severity": "medium",
+      "category": "quantum-vulnerable",
+      "file": "src/vulnerable_crypto.java",
+      "line": 11,
+      "matched": "KeyPairGenerator.getInstance(\"RSA\"",
+      "source": "KeyPairGenerator rsa = KeyPairGenerator.getInstance(\"RSA\");",
+      "message": "RSA is quantum-vulnerable and should be inventoried for PQC migration.",
+      "recommendation": "Register this usage in CBOM and plan migration to PQC or hybrid cryptography."
+    }
+  ]
+}
