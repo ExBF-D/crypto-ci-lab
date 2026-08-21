@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-08-21T02:12:35.914893+00:00",
+  "generated_at": "2026-08-21T02:13:37.123470+00:00",
   "summary": {
-    "total": 12,
+    "total": 11,
     "severity": {
       "critical": 2,
-      "high": 6,
+      "high": 5,
       "medium": 4
     },
     "category": {
-      "prohibited": 8,
+      "prohibited": 7,
       "quantum-vulnerable": 4
     }
   },
@@ -21,7 +21,7 @@
       "file": "src/vulnerable_crypto.c",
       "line": 12,
       "matched": "MD5_Init(",
-      "source": "MD5_Init(&md5);",
+      "source": "MD5_Init(&SHA-3);",
       "message": "MD5 is prohibited because it is vulnerable to collision attacks.",
       "recommendation": "Use SHA-256 or SHA-3."
     },
@@ -33,7 +33,7 @@
       "file": "src/vulnerable_crypto.c",
       "line": 13,
       "matched": "MD5_Update(",
-      "source": "MD5_Update(&md5, msg, len);",
+      "source": "MD5_Update(&SHA-3, msg, len);",
       "message": "MD5 is prohibited because it is vulnerable to collision attacks.",
       "recommendation": "Use SHA-256 or SHA-3."
     },
@@ -45,21 +45,9 @@
       "file": "src/vulnerable_crypto.c",
       "line": 18,
       "matched": "SHA1_Init(",
-      "source": "SHA1_Init(&sha1);",
+      "source": "SHA1_Init(&SHA-3);",
       "message": "SHA-1 is prohibited because it is vulnerable to collision attacks.",
       "recommendation": "Use SHA-256 or SHA-3."
-    },
-    {
-      "rule_id": "CRYPTO-004",
-      "name": "RSA 1024",
-      "severity": "high",
-      "category": "prohibited",
-      "file": "src/vulnerable_crypto.c",
-      "line": 27,
-      "matched": "RSA_generate_key_ex(rsa, 1024",
-      "source": "RSA_generate_key_ex(rsa, 1024, e, NULL);",
-      "message": "RSA 1024-bit keys are too small.",
-      "recommendation": "Use stronger keys or define a PQC migration plan."
     },
     {
       "rule_id": "CRYPTO-005",

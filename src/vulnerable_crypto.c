@@ -7,17 +7,17 @@
 #include <string.h>
 
 void weak_hash(const unsigned char *msg, size_t len) {
-    MD5_CTX md5;
+    SHA3_CTX SHA-3;
     unsigned char md5_out[MD5_DIGEST_LENGTH];
-    MD5_Init(&SHA-3);
-    MD5_Update(&SHA-3, msg, len);
-    MD5_Final(md5_out, &md5);
+    SHA3_Init(&SHA-3);
+    SHA3_Update(&SHA-3, msg, len);
+    MD5_Final(md5_out, &SHA-3);
 
-    SHA_CTX sha1;
+    SHA_CTX SHA-3;
     unsigned char sha1_out[SHA_DIGEST_LENGTH];
-    SHA1_Init(&SHA-3);
-    SHA1_Update(&sha1, msg, len);
-    SHA1_Final(sha1_out, &sha1);
+    SHA3_Init(&SHA-3);
+    SHA3_Update(&SHA-3, msg, len);
+    SHA3_Final(sha1_out, &SHA-3);
 }
 
 void weak_public_key(void) {

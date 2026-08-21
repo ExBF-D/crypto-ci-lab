@@ -1,13 +1,13 @@
 # Crypto Policy Scan Report
 
-- Total findings: 12
+- Total findings: 11
 
 ## 1. CRYPTO-001 - MD5
 - Severity: `critical`
 - Category: `prohibited`
 - Location: `src/vulnerable_crypto.c:12`
 - Matched: `MD5_Init(`
-- Source: `MD5_Init(&md5);`
+- Source: `MD5_Init(&SHA-3);`
 - Recommendation: Use SHA-256 or SHA-3.
 
 ## 2. CRYPTO-001 - MD5
@@ -15,7 +15,7 @@
 - Category: `prohibited`
 - Location: `src/vulnerable_crypto.c:13`
 - Matched: `MD5_Update(`
-- Source: `MD5_Update(&md5, msg, len);`
+- Source: `MD5_Update(&SHA-3, msg, len);`
 - Recommendation: Use SHA-256 or SHA-3.
 
 ## 3. CRYPTO-002 - SHA-1
@@ -23,18 +23,10 @@
 - Category: `prohibited`
 - Location: `src/vulnerable_crypto.c:18`
 - Matched: `SHA1_Init(`
-- Source: `SHA1_Init(&sha1);`
+- Source: `SHA1_Init(&SHA-3);`
 - Recommendation: Use SHA-256 or SHA-3.
 
-## 4. CRYPTO-004 - RSA 1024
-- Severity: `high`
-- Category: `prohibited`
-- Location: `src/vulnerable_crypto.c:27`
-- Matched: `RSA_generate_key_ex(rsa, 1024`
-- Source: `RSA_generate_key_ex(rsa, 1024, e, NULL);`
-- Recommendation: Use stronger keys or define a PQC migration plan.
-
-## 5. CRYPTO-005 - RSA usage
+## 4. CRYPTO-005 - RSA usage
 - Severity: `medium`
 - Category: `quantum-vulnerable`
 - Location: `src/vulnerable_crypto.c:24`
@@ -42,7 +34,7 @@
 - Source: `RSA *rsa = RSA_new();`
 - Recommendation: Register this usage in CBOM and plan migration to PQC or hybrid cryptography.
 
-## 6. CRYPTO-006 - ECC usage
+## 5. CRYPTO-006 - ECC usage
 - Severity: `medium`
 - Category: `quantum-vulnerable`
 - Location: `src/vulnerable_crypto.c:31`
@@ -50,7 +42,7 @@
 - Source: `EC_KEY *ec = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);`
 - Recommendation: Consider PQC or hybrid TLS/signature migration.
 
-## 7. CRYPTO-006 - ECC usage
+## 6. CRYPTO-006 - ECC usage
 - Severity: `medium`
 - Category: `quantum-vulnerable`
 - Location: `src/vulnerable_crypto.c:31`
@@ -58,7 +50,7 @@
 - Source: `EC_KEY *ec = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);`
 - Recommendation: Consider PQC or hybrid TLS/signature migration.
 
-## 8. CRYPTO-003 - DES or ECB mode
+## 7. CRYPTO-003 - DES or ECB mode
 - Severity: `high`
 - Category: `prohibited`
 - Location: `src/vulnerable_crypto.java:9`
@@ -66,7 +58,7 @@
 - Source: `Cipher des = Cipher.getInstance("DES/ECB/PKCS5Padding");`
 - Recommendation: Use AES-GCM.
 
-## 9. CRYPTO-003 - DES or ECB mode
+## 8. CRYPTO-003 - DES or ECB mode
 - Severity: `high`
 - Category: `prohibited`
 - Location: `src/vulnerable_crypto.java:10`
@@ -74,7 +66,7 @@
 - Source: `Cipher aesEcb = Cipher.getInstance("AES/ECB/PKCS5Padding");`
 - Recommendation: Use AES-GCM.
 
-## 10. CRYPTO-003 - DES or ECB mode
+## 9. CRYPTO-003 - DES or ECB mode
 - Severity: `high`
 - Category: `prohibited`
 - Location: `src/vulnerable_crypto.java:9`
@@ -82,7 +74,7 @@
 - Source: `Cipher des = Cipher.getInstance("DES/ECB/PKCS5Padding");`
 - Recommendation: Use AES-GCM.
 
-## 11. CRYPTO-004 - RSA 1024
+## 10. CRYPTO-004 - RSA 1024
 - Severity: `high`
 - Category: `prohibited`
 - Location: `src/vulnerable_crypto.java:12`
@@ -90,7 +82,7 @@
 - Source: `rsa.initialize(1024);`
 - Recommendation: Use stronger keys or define a PQC migration plan.
 
-## 12. CRYPTO-005 - RSA usage
+## 11. CRYPTO-005 - RSA usage
 - Severity: `medium`
 - Category: `quantum-vulnerable`
 - Location: `src/vulnerable_crypto.java:11`
