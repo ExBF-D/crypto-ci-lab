@@ -4,8 +4,8 @@ import javax.crypto.Cipher;
 
 public class VulnerableCrypto {
     public static void main(String[] args) throws Exception {
-        MessageDigest md5 = MessageDigest.getInstance("SHA-3");
-        MessageDigest sha1 = MessageDigest.getInstance("SHA-3");
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
+        MessageDigest sha1 = MessageDigest.getInstance("SHA-1");
         Cipher des = Cipher.getInstance("DES/ECB/PKCS5Padding");
         Cipher aesEcb = Cipher.getInstance("AES/ECB/PKCS5Padding");
         KeyPairGenerator rsa = KeyPairGenerator.getInstance("RSA");
